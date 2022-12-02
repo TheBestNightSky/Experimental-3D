@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{0f28a51a-660a-481f-9310-82cf9ef2dec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window">
+      <UniqueIdentifier>{6eb4b3d2-5a29-4f78-9097-f7d78ac2fc46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{d9cbd89a-4b83-41e8-b6ec-528032d72e48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window">
+      <UniqueIdentifier>{8e01c478-113f-4622-b42c-ff6304f39f19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics">
+      <UniqueIdentifier>{e82511a0-d835-4685-a0a3-f5afd148c8d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window\Graphics">
+      <UniqueIdentifier>{ad499c84-77c7-4969-8576-8a51a3901be0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\DXERR">
+      <UniqueIdentifier>{f1ece317-16a2-4ac5-a1ff-409a047882e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window\Graphics\DXERR">
+      <UniqueIdentifier>{f69b4b77-516c-4e74-be4c-9276b5becb33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Shader">
+      <UniqueIdentifier>{e2788197-68b0-4018-85fd-3151862ab3c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Bindable">
+      <UniqueIdentifier>{bef8e3ce-3635-4b13-b833-9237e7f457c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Drawable">
+      <UniqueIdentifier>{daa4eac0-130c-46ee-8a58-f5751a9434c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window\Graphics\Bindable">
+      <UniqueIdentifier>{8144c57c-11bc-48e2-a86b-520ac4f73701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window\Graphics\Drawable">
+      <UniqueIdentifier>{c0243cb1-6be2-4d68-ab9f-5b67fd766e57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Drawable\Geometric Primatives">
+      <UniqueIdentifier>{9fa60148-bdb8-45a7-bcd2-09ee0bac1451}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\imgui">
+      <UniqueIdentifier>{969dda12-d4fe-45ac-9b84-7941f8451fff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window\Graphics\imgui">
+      <UniqueIdentifier>{20b287c4-3f49-42de-ba9d-c426b6f5257a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window\Graphics\imgui\core">
+      <UniqueIdentifier>{c5c54639-a9f4-489a-b57f-47ed4e2bf5ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\imgui\core">
+      <UniqueIdentifier>{b7be9e7d-785b-4dd0-bb62-cc1fccfa4252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scrap Bin">
+      <UniqueIdentifier>{60492a15-422d-4bd3-8b2e-0ecce7d92570}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="Source Files\Scrap Bin">
+      <UniqueIdentifier>{5b504615-84a4-4698-92fc-c308e179a782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Drawable\Lights">
+      <UniqueIdentifier>{05cc6b64-c879-41d5-90ef-f3f5fb03a087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window\Graphics\Drawable\Lights">
+      <UniqueIdentifier>{cc0011a4-4c89-4726-86d5-8d0d63284a9e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>Source Files\Engine\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Source Files\Engine\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\Engine\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>Source Files\Engine\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyeException.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyeFun.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyenetTimer.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files\Engine\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="DxgiInfoManager.cpp">
+      <Filter>Source Files\Engine\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="dxerr.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\DXERR</Filter>
+    </ClCompile>
+    <ClCompile Include="Bindable.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="InputLayout.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Topology.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformCbuf.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="Arrow.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="Pyramid.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="WndInfo.cpp">
+      <Filter>Source Files\Engine\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="GDIPlusManager.cpp">
+      <Filter>Source Files\Engine\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Surface.cpp">
+      <Filter>Source Files\Engine\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Sampler.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="SkinnedBox.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_tables.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_win32.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_dx11.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImguiManager.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Engine\Window\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Melon.cpp">
+      <Filter>Source Files\Scrap Bin</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="SolidSphere.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="Sheet.cpp">
+      <Filter>Source Files\Scrap Bin</Filter>
+    </ClCompile>
+    <ClCompile Include="Cylinder.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files\Engine\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Header Files\Engine\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Header Files\Engine\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyenetException.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyeFun.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="App.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyeWin.h">
+      <Filter>Header Files\Engine\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyenetTimer.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Header Files\Engine\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="DxgiInfoManager.h">
+      <Filter>Header Files\Engine\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsExceptionMacros.h">
+      <Filter>Header Files\Engine\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyeWRL.h">
+      <Filter>Header Files\Engine\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="dxerr.h">
+      <Filter>Header Files\Engine\Window\Graphics\DXERR</Filter>
+    </ClInclude>
+    <ClInclude Include="Bindable.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="BindableBase.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffers.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Topology.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformCbuf.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableBase.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexedTriangleList.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyeMath.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Geometric Primatives</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Geometric Primatives</Filter>
+    </ClInclude>
+    <ClInclude Include="Prism.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Geometric Primatives</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Geometric Primatives</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cone.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Geometric Primatives</Filter>
+    </ClInclude>
+    <ClInclude Include="Pyramid.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="WndInfo.h">
+      <Filter>Header Files\Engine\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="GDIPlusManager.h">
+      <Filter>Header Files\Engine\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Surface.h">
+      <Filter>Header Files\Engine\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sampler.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="SkinnedBox.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>Header Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>Header Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>Header Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>Header Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>Header Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>Header Files\Engine\Window\Graphics\imgui\core</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_dx11.h">
+      <Filter>Header Files\Engine\Window\Graphics\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_win32.h">
+      <Filter>Header Files\Engine\Window\Graphics\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImguiManager.h">
+      <Filter>Header Files\Engine\Window\Graphics\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Engine\Window\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Melon.h">
+      <Filter>Header Files\Scrap Bin</Filter>
+    </ClInclude>
+    <ClInclude Include="Arrow.h">
+      <Filter>Header Files\Scrap Bin</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="SolidSphere.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="Sheet.h">
+      <Filter>Header Files\Scrap Bin</Filter>
+    </ClInclude>
+    <ClInclude Include="Cylinder.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="TestObject.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Experimental 3D.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Downloads\icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXGetErrorString.inl">
+      <Filter>Header Files\Engine\Window\Graphics\DXERR</Filter>
+    </None>
+    <None Include="DXGetErrorDescription.inl">
+      <Filter>Header Files\Engine\Window\Graphics\DXERR</Filter>
+    </None>
+    <None Include="DXTrace.inl">
+      <Filter>Header Files\Engine\Window\Graphics\DXERR</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="ColorBlendVS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="ColorBlendPS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="TextureVS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="TexturePS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="ColorIndexPS.hlsl">
+      <Filter>Header Files\Scrap Bin</Filter>
+    </FxCompile>
+    <FxCompile Include="ColorIndexVS.hlsl">
+      <Filter>Header Files\Scrap Bin</Filter>
+    </FxCompile>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>Header Files\Scrap Bin</Filter>
+    </FxCompile>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>Header Files\Scrap Bin</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongPS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="SolidPS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongVS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="SolidVS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="IndexedPhongPS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="BlendedPhongPS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="BlendedPhongVS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="TexturedPhongPS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="TexturedPhongVS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
