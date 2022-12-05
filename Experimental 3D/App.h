@@ -5,6 +5,7 @@
 #include "ImguiManager.h"
 #include "Camera.h"
 #include "PointLight.h"
+#include "Mesh.h"
 #include <set>
 
 class App {
@@ -15,6 +16,7 @@ public:
 
 private:
 	void DoFrame(float dt);
+	void ShowModelWindow();
 
 private:
 	ImguiManager imgui;
@@ -22,13 +24,17 @@ private:
 	SkyenetTimer timer;
 	SkyenetTimer ftimer;
 	SkyenetTimer ptimer;
-	//std::unique_ptr<class Arrow> arrow;
-	std::vector<std::unique_ptr<class Drawable>> drawables;
-	std::vector<class Box*> boxes;
 	float speed_factor = 1.0f;
 	Camera cam;
 	PointLight light;
-	static constexpr size_t nDrawables = 200;
-	std::optional<int> comboBoxIndex;
-	std::set<int> boxControlIds;
+	Model nano{ wnd.Gfx(), "Models\\nanosuit.obj" };
+	struct
+	{
+		float roll = 0.0f;
+		float pitch = 0.0f;
+		float yaw = 0.0f;
+		float x = 0.0f;
+		float y = 0.0f;
+		float z = 0.0f;
+	} pos;
 };

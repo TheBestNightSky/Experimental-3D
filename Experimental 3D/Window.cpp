@@ -1,6 +1,5 @@
 #include "Window.h"
 #include "SkyenetException.h"
-#include "SkyeFun.h"
 #include <sstream>
 #include <string>
 #include "resource.h"

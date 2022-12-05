@@ -1,6 +1,5 @@
 #include "App.h"
 #include "SkyenetException.h"
-#include "SkyeFun.h"
 
 int CALLBACK WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow ){
 

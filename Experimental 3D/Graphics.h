@@ -10,10 +10,14 @@
 #include <memory>
 #include <random>
 #include "WndInfo.h"
+#include "ConditionalNoexcept.h"
 
+namespace Bind {
+	class Bindable;
+}
 
 class Graphics {
-	friend class Bindable;
+	friend Bind::Bindable;
 	// **** Exception Handle **** //
 public:
 	class Exception : public SkyenetException
@@ -62,7 +66,7 @@ public:
 	void PushFrame();
 	void PushFrame_NO_VSYNC();
 	void BeginFrame(float red, float green, float blue) noexcept;
-	void DrawIndexed(UINT count) noexcept(!IS_DEBUG);
+	void DrawIndexed(UINT count) noxnd;
 	void SetProjection(DirectX::FXMMATRIX proj) noexcept;
 	DirectX::XMMATRIX GetProjection() const noexcept;
 	void SetCamera(DirectX::FXMMATRIX cam) noexcept;

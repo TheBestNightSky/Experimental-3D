@@ -7,6 +7,7 @@ public:
 	DirectX::XMMATRIX GetMatrix() const noexcept;
 	void SpawnControlWindow() noexcept;
 	void Reset() noexcept;
+	void ModR(int r) noexcept;
 private:
 	float r = 20.0f;
 	float theta = 0.0f;

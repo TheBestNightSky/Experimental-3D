@@ -110,6 +110,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+      <AdditionalIncludeDirectories>C:\Users\Zachary\source\repos\Experimental 3D\Experimental 3D\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -134,6 +135,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+      <AdditionalIncludeDirectories>C:\Users\Zachary\source\repos\Experimental 3D\Experimental 3D\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -148,14 +150,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
-    <ClCompile Include="Arrow.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="AssTest.cpp" />
     <ClCompile Include="Bindable.cpp" />
-    <ClCompile Include="Box.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Cylinder.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="dxerr.cpp" />
     <ClCompile Include="DxgiInfoManager.cpp" />
@@ -172,20 +169,95 @@
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="InputLayout.cpp" />
     <ClCompile Include="Keyboard.cpp" />
-    <ClCompile Include="Melon.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="PixelShader.cpp" />
     <ClCompile Include="PointLight.cpp" />
-    <ClCompile Include="Pyramid.cpp" />
     <ClCompile Include="Sampler.cpp" />
-    <ClCompile Include="Sheet.cpp" />
-    <ClCompile Include="SkinnedBox.cpp" />
     <ClCompile Include="SolidSphere.cpp" />
     <ClCompile Include="Surface.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="WndInfo.cpp" />
+    <ClInclude Include="assimp\include\assimp\ai_assert.h" />
+    <ClInclude Include="assimp\include\assimp\anim.h" />
+    <ClInclude Include="assimp\include\assimp\BaseImporter.h" />
+    <ClInclude Include="assimp\include\assimp\Bitmap.h" />
+    <ClInclude Include="assimp\include\assimp\BlobIOSystem.h" />
+    <ClInclude Include="assimp\include\assimp\ByteSwapper.h" />
+    <ClInclude Include="assimp\include\assimp\camera.h" />
+    <ClInclude Include="assimp\include\assimp\cexport.h" />
+    <ClInclude Include="assimp\include\assimp\cfileio.h" />
+    <ClInclude Include="assimp\include\assimp\cimport.h" />
+    <ClInclude Include="assimp\include\assimp\color4.h" />
+    <ClInclude Include="assimp\include\assimp\Compiler\poppack1.h" />
+    <ClInclude Include="assimp\include\assimp\Compiler\pstdint.h" />
+    <ClInclude Include="assimp\include\assimp\Compiler\pushpack1.h" />
+    <ClInclude Include="assimp\include\assimp\config.h" />
+    <ClInclude Include="assimp\include\assimp\CreateAnimMesh.h" />
+    <ClInclude Include="assimp\include\assimp\DefaultIOStream.h" />
+    <ClInclude Include="assimp\include\assimp\DefaultIOSystem.h" />
+    <ClInclude Include="assimp\include\assimp\DefaultLogger.hpp" />
+    <ClInclude Include="assimp\include\assimp\Defines.h" />
+    <ClInclude Include="assimp\include\assimp\defs.h" />
+    <ClInclude Include="assimp\include\assimp\Exceptional.h" />
+    <ClInclude Include="assimp\include\assimp\Exporter.hpp" />
+    <ClInclude Include="assimp\include\assimp\fast_atof.h" />
+    <ClInclude Include="assimp\include\assimp\GenericProperty.h" />
+    <ClInclude Include="assimp\include\assimp\Hash.h" />
+    <ClInclude Include="assimp\include\assimp\Importer.hpp" />
+    <ClInclude Include="assimp\include\assimp\importerdesc.h" />
+    <ClInclude Include="assimp\include\assimp\IOStream.hpp" />
+    <ClInclude Include="assimp\include\assimp\IOStreamBuffer.h" />
+    <ClInclude Include="assimp\include\assimp\IOSystem.hpp" />
+    <ClInclude Include="assimp\include\assimp\irrXMLWrapper.h" />
+    <ClInclude Include="assimp\include\assimp\light.h" />
+    <ClInclude Include="assimp\include\assimp\LineSplitter.h" />
+    <ClInclude Include="assimp\include\assimp\LogAux.h" />
+    <ClInclude Include="assimp\include\assimp\Logger.hpp" />
+    <ClInclude Include="assimp\include\assimp\LogStream.hpp" />
+    <ClInclude Include="assimp\include\assimp\Macros.h" />
+    <ClInclude Include="assimp\include\assimp\material.h" />
+    <ClInclude Include="assimp\include\assimp\MathFunctions.h" />
+    <ClInclude Include="assimp\include\assimp\matrix3x3.h" />
+    <ClInclude Include="assimp\include\assimp\matrix4x4.h" />
+    <ClInclude Include="assimp\include\assimp\MemoryIOWrapper.h" />
+    <ClInclude Include="assimp\include\assimp\mesh.h" />
+    <ClInclude Include="assimp\include\assimp\metadata.h" />
+    <ClInclude Include="assimp\include\assimp\NullLogger.hpp" />
+    <ClInclude Include="assimp\include\assimp\ParsingUtils.h" />
+    <ClInclude Include="assimp\include\assimp\pbrmaterial.h" />
+    <ClInclude Include="assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h" />
+    <ClInclude Include="assimp\include\assimp\postprocess.h" />
+    <ClInclude Include="assimp\include\assimp\Profiler.h" />
+    <ClInclude Include="assimp\include\assimp\ProgressHandler.hpp" />
+    <ClInclude Include="assimp\include\assimp\qnan.h" />
+    <ClInclude Include="assimp\include\assimp\quaternion.h" />
+    <ClInclude Include="assimp\include\assimp\RemoveComments.h" />
+    <ClInclude Include="assimp\include\assimp\scene.h" />
+    <ClInclude Include="assimp\include\assimp\SceneCombiner.h" />
+    <ClInclude Include="assimp\include\assimp\SGSpatialSort.h" />
+    <ClInclude Include="assimp\include\assimp\SkeletonMeshBuilder.h" />
+    <ClInclude Include="assimp\include\assimp\SmoothingGroups.h" />
+    <ClInclude Include="assimp\include\assimp\SpatialSort.h" />
+    <ClInclude Include="assimp\include\assimp\StandardShapes.h" />
+    <ClInclude Include="assimp\include\assimp\StreamReader.h" />
+    <ClInclude Include="assimp\include\assimp\StreamWriter.h" />
+    <ClInclude Include="assimp\include\assimp\StringComparison.h" />
+    <ClInclude Include="assimp\include\assimp\StringUtils.h" />
+    <ClInclude Include="assimp\include\assimp\Subdivision.h" />
+    <ClInclude Include="assimp\include\assimp\texture.h" />
+    <ClInclude Include="assimp\include\assimp\TinyFormatter.h" />
+    <ClInclude Include="assimp\include\assimp\types.h" />
+    <ClInclude Include="assimp\include\assimp\vector2.h" />
+    <ClInclude Include="assimp\include\assimp\vector3.h" />
+    <ClInclude Include="assimp\include\assimp\version.h" />
+    <ClInclude Include="assimp\include\assimp\Vertex.h" />
+    <ClInclude Include="assimp\include\assimp\XMLTools.h" />
+    <ClInclude Include="AssTest.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Cylinder.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="ConditionalNoexcept.h" />
     <ClInclude Include="GDIPlusManager.h" />
     <ClInclude Include="ImguiManager.h" />
     <ClInclude Include="imgui\imconfig.h" />
@@ -196,12 +268,9 @@
     <ClInclude Include="imgui\imstb_rectpack.h" />
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="PointLight.h" />
-    <ClInclude Include="Pyramid.h">
-      <FileType>CppCode</FileType>
-    </ClInclude>
     <ClCompile Include="SkyeException.cpp" />
-    <ClCompile Include="SkyeFun.cpp" />
     <ClCompile Include="SkyenetTimer.cpp" />
     <ClCompile Include="Topology.cpp" />
     <ClCompile Include="TransformCbuf.cpp" />
@@ -212,28 +281,21 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NDEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClInclude Include="Sampler.h" />
-    <ClInclude Include="Sheet.h" />
-    <ClInclude Include="SkinnedBox.h" />
     <ClInclude Include="SolidSphere.h" />
     <ClInclude Include="Surface.h" />
     <ClInclude Include="TestObject.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="Vertex.h" />
     <ClInclude Include="WndInfo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
-    <ClInclude Include="Arrow.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="Bindable.h" />
-    <ClInclude Include="BindableBase.h" />
+    <ClInclude Include="BindableCommon.h" />
     <ClInclude Include="Cone.h" />
     <ClInclude Include="ConstantBuffers.h" />
     <ClInclude Include="Cube.h" />
-    <ClInclude Include="Melon.h" />
     <ClInclude Include="Plane.h" />
-    <ClInclude Include="Box.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="DrawableBase.h" />
     <ClInclude Include="dxerr.h" />
@@ -248,7 +310,6 @@
     <ClInclude Include="PixelShader.h" />
     <ClInclude Include="Prism.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="SkyeFun.h" />
     <ClInclude Include="SkyeMath.h" />
     <ClInclude Include="SkyenetException.h" />
     <ClInclude Include="SkyenetTimer.h" />
@@ -268,29 +329,21 @@
     <Image Include="..\..\..\..\Downloads\icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assimp-vc140-mt.dll" />
+    <None Include="assimp\include\assimp\color4.inl" />
+    <None Include="assimp\include\assimp\material.inl" />
+    <None Include="assimp\include\assimp\matrix3x3.inl" />
+    <None Include="assimp\include\assimp\matrix4x4.inl" />
+    <None Include="assimp\include\assimp\quaternion.inl" />
+    <None Include="assimp\include\assimp\SmoothingGroups.inl" />
+    <None Include="assimp\include\assimp\vector2.inl" />
+    <None Include="assimp\include\assimp\vector3.inl" />
     <None Include="DXGetErrorDescription.inl" />
     <None Include="DXGetErrorString.inl" />
     <None Include="DXTrace.inl" />
+    <None Include="zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="BlendedPhongPS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="BlendedPhongVS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="IndexedPhongPS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-    </FxCompile>
     <FxCompile Include="PhongPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
@@ -302,32 +355,6 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="PixelShader.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="ColorBlendPS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="ColorIndexPS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <FxCompile Include="SolidPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
@@ -341,60 +368,9 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
-    <FxCompile Include="TexturedPhongPS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="TexturedPhongVS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="TexturePS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="TextureVS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="VertexShader.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="ColorBlendVS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="ColorIndexVS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="assimp\bin\x64\assimp-vc140-mt.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

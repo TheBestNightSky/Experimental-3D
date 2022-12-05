@@ -46,3 +46,8 @@ void Camera::Reset() noexcept
 	yaw = 0.0f;
 	roll = 0.0f;
 }
+
+void Camera::ModR(int R) noexcept {
+	r += R;
+	r = std::clamp(r, 0.1f, 80.0f);
+}

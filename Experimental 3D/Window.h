@@ -1,7 +1,6 @@
 #pragma once
 #include "SkyeWin.h"
 #include "SkyenetException.h"
-#include "SkyeFun.h"
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
