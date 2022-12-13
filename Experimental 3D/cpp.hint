@@ -1,0 +1,24 @@
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define RESOLVE_BASE(eltype) virtual size_t Resolve##eltype() const noxnd { assert( false && "Cannot resolve to" #eltype ); return 0u; }
+#define LEAF_ELEMENT(eltype, systype) class eltype : public LayoutElement { public: using SystemType = systype; using LayoutElement::LayoutElement; size_t Resolve##eltype() const noxnd override final { return GetOffsetBegin(); } size_t GetOffsetEnd() const noexcept override final { return GetOffsetBegin() + sizeof( systype ); } };
+#define assert(expression) ((void)0)
+#define assert(expression) (void)( (!!(expression)) || (_wassert(_CRT_WIDE(#expression), _CRT_WIDE(__FILE__), (unsigned)(__LINE__)), 0) )
+#define REF_CONVERSION(eltype) operator eltype::SystemType&() noxnd { return *reinterpret_cast<eltype::SystemType*>(pBytes + offset + pLayout->Resolve##eltype()); } eltype::SystemType& operator=( const eltype::SystemType& rhs ) noxnd { return static_cast<eltype::SystemType&>(*this) = rhs; }
+#define noxnd noexcept(!IS_DEBUG)
+#define DCB_LEAF_ELEMENT(eltype, systype) DCB_LEAF_ELEMENT_IMPL(eltype,systype,sizeof(systype))
+#define DCB_LEAF_ELEMENT_IMPL(eltype, systype, hlslSize) class eltype : public LayoutElement { friend LayoutElement; public: using SystemType = systype; size_t Resolve##eltype() const noxnd final; size_t GetOffsetEnd() const noexcept final; std::string GetSignature() const noxnd final; protected: size_t Finalize( size_t offset_in ) noxnd final; size_t ComputeSize() const noxnd final;};
+#define DCB_LEAF_ELEMENT_IMPL(eltype, systype, hlslSize) size_t eltype::Resolve##eltype() const noxnd { return GetOffsetBegin(); } size_t eltype::GetOffsetEnd() const noexcept { return GetOffsetBegin() + ComputeSize(); } size_t eltype::Finalize( size_t offset_in ) noxnd { offset = offset_in; return offset_in + ComputeSize(); } size_t eltype::ComputeSize() const noxnd { return (hlslSize); } std::string eltype::GetSignature() const noxnd { return #eltype; }
+#define DCB_RESOLVE_BASE(eltype) virtual size_t Resolve##eltype() const noxnd;
+#define DCB_RESOLVE_BASE(eltype) size_t LayoutElement::Resolve##eltype() const noxnd { assert( false && "Cannot resolve to" #eltype ); return 0u; }
+#define DCB_PTR_CONVERSION(eltype, __VA_ARGS__) operator __VA_ARGS__ eltype::SystemType*() noxnd;
+#define DCB_PTR_CONVERSION(reftype, eltype, __VA_ARGS__) reftype::Ptr::operator __VA_ARGS__ eltype::SystemType*() noxnd { return &static_cast<__VA_ARGS__ eltype::SystemType&>(ref); }
+#define DCB_REF_NONCONST(eltype) DCB_REF_CONVERSION(eltype) DCB_REF_ASSIGN(eltype)
+#define DCB_REF_NONCONST(reftype, eltype) DCB_REF_CONVERSION(reftype,eltype) DCB_REF_ASSIGN(reftype,eltype)
+#define DCB_REF_CONST(eltype) DCB_REF_CONVERSION(eltype,const)
+#define DCB_REF_CONST(reftype, eltype) DCB_REF_CONVERSION(reftype,eltype,const)
+#define DCB_REF_NONCONST(eltype) DCB_REF_CONVERSION(eltype) DCB_REF_ASSIGN(eltype)
+#define DCB_REF_NONCONST(reftype, eltype) DCB_REF_CONVERSION(reftype,eltype) DCB_REF_ASSIGN(reftype,eltype)
+#define LEAF_ELEMENT_TYPES X( Float ) X( Float2 ) X( Float3 ) X( Float4 ) X( Matrix ) X( Bool )
+#define DVTX_ELEMENT_AI_EXTRACTOR(member) static SysType Extract( const aiMesh& mesh,size_t i ) noexcept {return *reinterpret_cast<const SysType*>(&mesh.member[i]);}

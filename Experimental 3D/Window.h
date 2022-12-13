@@ -48,10 +48,19 @@ public:
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
 	void SetTitle(const std::wstring& title);
+	void EnableCursor() noexcept;
+	void DisableCursor() noexcept;
+	bool CursorEnabled() noexcept;
 	static std::optional<int> ProcessMessages();
 	Graphics& Gfx();
 
 private:
+	void ConfineCursor() noexcept;
+	void FreeCursor() noexcept;
+	void HideCursor() noexcept;
+	void ShowCursor() noexcept;
+	void EnableImGuiMouse() noexcept;
+	void DisableImGuiMouse() noexcept;
 	static LRESULT WINAPI MsgHandlerSetup( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam ) noexcept;
 	static LRESULT WINAPI MsgHandlerHandoff( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam ) noexcept;
 	LRESULT MsgHandler( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam ) noexcept;
@@ -61,11 +70,13 @@ public:
 	Mouse mouse;
 	WndInfo GetWndInfo();
 private:
+	bool cursorEnabled = true;
 	int width;
 	int height;
 	HWND hWnd;
 	WndInfo winfo;
 	std::unique_ptr<Graphics> pGfx;
+	std::vector<BYTE> rawBuffer;
 };
 
 // exception helper macro

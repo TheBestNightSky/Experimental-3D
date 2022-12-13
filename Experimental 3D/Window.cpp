@@ -82,6 +82,16 @@ Window::Window(int width, int height, const wchar_t* name) : width(width), heigh
 	winfo = WndInfo(hWnd);
 	// create graphics object
 	pGfx = std::make_unique<Graphics>(hWnd, winfo);
+	// register mouse raw input device
+	RAWINPUTDEVICE rid;
+	rid.usUsagePage = 0x01; // mouse page
+	rid.usUsage = 0x02; // mouse usage
+	rid.dwFlags = 0;
+	rid.hwndTarget = nullptr;
+	if (RegisterRawInputDevices(&rid, 1, sizeof(rid)) == FALSE)
+	{
+		throw SKWND_LAST_EXCEPT();
+	}
 }
 
 WndInfo Window::GetWndInfo(){
@@ -100,9 +110,63 @@ void Window::SetTitle(const std::wstring& title) {
 	}
 }
 
+void Window::EnableCursor() noexcept
+{
+	cursorEnabled = true;
+	ShowCursor();
+	EnableImGuiMouse();
+	FreeCursor();
+}
+
+void Window::DisableCursor() noexcept
+{
+	cursorEnabled = false;
+	HideCursor();
+	DisableImGuiMouse();
+	ConfineCursor();
+}
+
+bool Window::CursorEnabled() noexcept
+{
+	return cursorEnabled;
+}
+
 Graphics& Window::Gfx() {
 
 	return *pGfx;
+}
+
+void Window::ConfineCursor() noexcept
+{
+	RECT rect;
+	GetClientRect(hWnd, &rect);
+	MapWindowPoints(hWnd, nullptr, reinterpret_cast<POINT*>(&rect), 2);
+	ClipCursor(&rect);
+}
+
+void Window::FreeCursor() noexcept
+{
+	ClipCursor(nullptr);
+}
+
+void Window::HideCursor() noexcept
+{
+	while (::ShowCursor(FALSE) >= 0);
+}
+
+void Window::ShowCursor() noexcept
+{
+	while (::ShowCursor(TRUE) < 0);
+}
+
+void Window::EnableImGuiMouse() noexcept
+{
+	ImGui::GetIO().ConfigFlags &= ~ImGuiConfigFlags_NoMouse;
+}
+
+void Window::DisableImGuiMouse() noexcept
+{
+	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouse;
 }
 
 std::optional<int> Window::ProcessMessages() {
@@ -169,6 +233,25 @@ LRESULT Window::MsgHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) no
 	// clear all keystates when the window loses focus
 	case WM_KILLFOCUS:
 		kbd.ClearState();
+		break;
+	case WM_ACTIVATE:
+		OutputDebugStringA("activeate\n");
+		// confine/free cursor on window to foreground/background if cursor disabled
+		if (!cursorEnabled)
+		{
+			if (wParam & WA_ACTIVE)
+			{
+				OutputDebugStringA("activeate => confine\n");
+				ConfineCursor();
+				HideCursor();
+			}
+			else
+			{
+				OutputDebugStringA("activeate => free\n");
+				FreeCursor();
+				ShowCursor();
+			}
+		}
 		break;
 
 	// Keyboard event messages //
@@ -240,6 +323,12 @@ LRESULT Window::MsgHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) no
 
 	case WM_LBUTTONDOWN: {
 		SetForegroundWindow(hWnd);
+		if (!cursorEnabled)
+		{
+			OutputDebugStringA("lclick => recapture\n");
+			ConfineCursor();
+			HideCursor();
+		}
 		if (imio.WantCaptureMouse)
 		{
 			break;
@@ -328,7 +417,47 @@ LRESULT Window::MsgHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) no
 	// END OF MOUSE EVENT MESSAGES //
 
 	// Raw mouse event messages //
+	case WM_INPUT:
+	{
+		if (!mouse.RawEnabled())
+		{
+			break;
+		}
+		UINT size;
+		// first get the size of the input data
+		if (GetRawInputData(
+			reinterpret_cast<HRAWINPUT>(lParam),
+			RID_INPUT,
+			nullptr,
+			&size,
+			sizeof(RAWINPUTHEADER)) == -1)
+		{
+			// bail msg processing if error
+			break;
+		}
+		rawBuffer.resize(size);
+		// read in the input data
+		if (GetRawInputData(
+			reinterpret_cast<HRAWINPUT>(lParam),
+			RID_INPUT,
+			rawBuffer.data(),
+			&size,
+			sizeof(RAWINPUTHEADER)) != size)
+		{
+			// bail msg processing if error
+			break;
+		}
+		// process the raw input data
+		auto& ri = reinterpret_cast<const RAWINPUT&>(*rawBuffer.data());
+		if (ri.header.dwType == RIM_TYPEMOUSE &&
+			(ri.data.mouse.lLastX != 0 || ri.data.mouse.lLastY != 0))
+		{
+			mouse.OnRawDelta(ri.data.mouse.lLastX, ri.data.mouse.lLastY);
+		}
+		break;
 
+		// END OF RAW MOUSE EVENT MESSAGES //
+	}
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);

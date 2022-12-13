@@ -1,5 +1,8 @@
 #include "PointLight.h"
 #include "imgui/imgui.h"
+#include <vector>
+#include <memory>
+#include "FrameCommander.h"
 
 PointLight::PointLight(Graphics& gfx, float radius)
 	:
@@ -7,11 +10,12 @@ PointLight::PointLight(Graphics& gfx, float radius)
 	cbuf(gfx)
 {
 	Reset();
+	pDataBuffer.push_back(&(this->cbData));
 }
 
-void PointLight::SpawnControlWindow() noexcept
+void PointLight::SpawnControlWindow(const char* name) noexcept
 {
-	if (ImGui::Begin("Light"))
+	if (ImGui::Begin(name))
 	{
 		ImGui::Text("Position");
 		ImGui::SliderFloat("X", &cbData.pos.x, -60.0f, 60.0f, "%.1f");
@@ -39,8 +43,8 @@ void PointLight::SpawnControlWindow() noexcept
 void PointLight::Reset() noexcept
 {
 	cbData = {
+		{ 10.0f,9.0f,-2.5f },
 		{ 0.0f,0.0f,0.0f },
-		{ 0.05f,0.05f,0.05f },
 		{ 1.0f,1.0f,1.0f },
 		1.0f,
 		1.0f,
@@ -49,17 +53,31 @@ void PointLight::Reset() noexcept
 	};
 }
 
-void PointLight::Draw(Graphics& gfx) const noexcept(!IS_DEBUG)
+void PointLight::SetPos(DirectX::XMFLOAT3 pos_in) noexcept {
+	cbData.pos = pos_in;
+}
+
+void PointLight::Submit(FrameCommander& frame) const noxnd
 {
 	mesh.SetPos(cbData.pos);
-	mesh.Draw(gfx);
+	mesh.Submit(frame);
 }
 
 void PointLight::Bind(Graphics& gfx, DirectX::FXMMATRIX view) const noexcept
 {
-	auto dataCopy = cbData;
-	const auto pos = DirectX::XMLoadFloat3(&cbData.pos);
-	DirectX::XMStoreFloat3(&dataCopy.pos, DirectX::XMVector3Transform(pos, view));
-	cbuf.Update(gfx, dataCopy);
-	cbuf.Bind(gfx);
+	if (!pDataBuffer.empty()) {
+		PointLightCBuf Data;
+		Data.num_point_lights = 0;
+		for (int i = 0; i < pDataBuffer.size(); i++) {
+			auto dataCopy = *(pDataBuffer[i]);
+			const auto pos = DirectX::XMLoadFloat3(&dataCopy.pos);
+			DirectX::XMStoreFloat3(&dataCopy.pos, DirectX::XMVector3Transform(pos, view));
+			Data.pointLights[i] = dataCopy;
+			Data.num_point_lights++;
+		}
+		cbuf.Update(gfx, Data);
+		cbuf.Bind(gfx);
+	}
 }
+
+std::vector<PointLight::PointLightData*> PointLight::pDataBuffer;

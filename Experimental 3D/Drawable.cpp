@@ -1,32 +1,58 @@
 #include "Drawable.h"
 #include "GraphicsExceptionMacros.h"
-#include "IndexBuffer.h"
-#include <cassert>
+#include "BindableCommon.h"
+#include "BindableCodex.h"
+#include <assimp/scene.h>
+#include "Material.h"
 
 using namespace Bind;
 
-void Drawable::Draw(Graphics& gfx) const noxnd
+
+void Drawable::Submit(FrameCommander& frame) const noexcept
 {
-	for (auto& b : binds)
+	for (const auto& tech : techniques)
 	{
-		b->Bind(gfx);
+		tech.Submit(frame, *this);
 	};
-	for (auto& b : GetStaticBinds())
-	{
-		b->Bind(gfx);
-	};
-	gfx.DrawIndexed(pIndexBuffer->GetCount());
 }
 
-void Drawable::AddBind(std::unique_ptr<Bindable> bind) noxnd
+Drawable::Drawable(Graphics& gfx, const Material& mat, const aiMesh& mesh, float scale) noexcept
 {
-	assert("*Must* use AddIndexBuffer to bind index buffer" && typeid(*bind) != typeid(IndexBuffer));
-	binds.push_back(std::move(bind));
+	pVertices = mat.MakeVertexBindable(gfx, mesh, scale);
+	pIndices = mat.MakeIndexBindable(gfx, mesh);
+	pTopology = Bind::Topology::Resolve(gfx);
+
+	for (auto& t : mat.GetTechniques())
+	{
+		AddTechnique(std::move(t));
+	}
 }
 
-void Drawable::AddIndexBuffer(std::unique_ptr<IndexBuffer> ibuf) noxnd
+void Drawable::AddTechnique(Technique tech_in) noexcept
 {
-	assert("Attempting to add index buffer a second time" && pIndexBuffer == nullptr);
-	pIndexBuffer = ibuf.get();
-	binds.push_back(std::move(ibuf));
+	tech_in.InitializeParentReferences(*this);
+	techniques.push_back(std::move(tech_in));
 }
+
+void Drawable::Bind(Graphics& gfx) const noexcept
+{
+	pTopology->Bind(gfx);
+	pIndices->Bind(gfx);
+	pVertices->Bind(gfx);
+}
+
+void Drawable::Accept(TechniqueProbe& probe)
+{
+	for (auto& t : techniques)
+	{
+		t.Accept(probe);
+	}
+}
+
+UINT Drawable::GetIndexCount() const noxnd
+{
+	return pIndices->GetCount();
+}
+
+Drawable::~Drawable()
+{}

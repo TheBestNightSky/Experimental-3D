@@ -1,3 +1,4 @@
+#define DVTX_SOURCE_FILE
 #include "Vertex.h"
 
 namespace Dvtx
@@ -9,8 +10,22 @@ namespace Dvtx
 	}
 	VertexLayout& VertexLayout::Append(ElementType type) noxnd
 	{
-		elements.emplace_back(type, Size());
+		if (!Has(type))
+		{
+			elements.emplace_back(type, Size());
+		}
 		return *this;
+	}
+	bool VertexLayout::Has(ElementType type) const noexcept
+	{
+		for (auto& e : elements)
+		{
+			if (e.GetType() == type)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	size_t VertexLayout::Size() const noxnd
 	{
@@ -29,6 +44,15 @@ namespace Dvtx
 			desc.push_back(e.GetDesc());
 		}
 		return desc;
+	}
+	std::string VertexLayout::GetCode() const noxnd
+	{
+		std::string code;
+		for (const auto& e : elements)
+		{
+			code += e.GetCode();
+		}
+		return code;
 	}
 
 
@@ -50,53 +74,49 @@ namespace Dvtx
 	{
 		return SizeOf(type);
 	}
-	constexpr size_t VertexLayout::Element::SizeOf(ElementType type) noxnd
-	{
-		switch (type)
-		{
-		case Position2D:
-			return sizeof(Map<Position2D>::SysType);
-		case Position3D:
-			return sizeof(Map<Position3D>::SysType);
-		case Texture2D:
-			return sizeof(Map<Texture2D>::SysType);
-		case Normal:
-			return sizeof(Map<Normal>::SysType);
-		case Float3Color:
-			return sizeof(Map<Float3Color>::SysType);
-		case Float4Color:
-			return sizeof(Map<Float4Color>::SysType);
-		case BGRAColor:
-			return sizeof(Map<BGRAColor>::SysType);
-		}
-		assert("Invalid element type" && false);
-		return 0u;
-	}
 	VertexLayout::ElementType VertexLayout::Element::GetType() const noexcept
 	{
 		return type;
 	}
+
+	template<VertexLayout::ElementType type>
+	struct SysSizeLookup
+	{
+		static constexpr auto Exec() noexcept
+		{
+			return sizeof(VertexLayout::Map<type>::SysType);
+		}
+	};
+	constexpr size_t VertexLayout::Element::SizeOf(ElementType type) noxnd
+	{
+		return Bridge<SysSizeLookup>(type);
+	}
+
+	template<VertexLayout::ElementType type>
+	struct CodeLookup
+	{
+		static constexpr auto Exec() noexcept
+		{
+			return VertexLayout::Map<type>::code;
+		}
+	};
+	const char* Dvtx::VertexLayout::Element::GetCode() const noexcept
+	{
+		return Bridge<CodeLookup>(type);
+	}
+
+	template<VertexLayout::ElementType type> struct DescGenerate {
+		static constexpr D3D11_INPUT_ELEMENT_DESC Exec(size_t offset) noexcept {
+			return {
+				VertexLayout::Map<type>::semantic,0,
+				VertexLayout::Map<type>::dxgiFormat,
+				0,(UINT)offset,D3D11_INPUT_PER_VERTEX_DATA,0
+			};
+		}
+	};
 	D3D11_INPUT_ELEMENT_DESC VertexLayout::Element::GetDesc() const noxnd
 	{
-		switch (type)
-		{
-		case Position2D:
-			return GenerateDesc<Position2D>(GetOffset());
-		case Position3D:
-			return GenerateDesc<Position3D>(GetOffset());
-		case Texture2D:
-			return GenerateDesc<Texture2D>(GetOffset());
-		case Normal:
-			return GenerateDesc<Normal>(GetOffset());
-		case Float3Color:
-			return GenerateDesc<Float3Color>(GetOffset());
-		case Float4Color:
-			return GenerateDesc<Float4Color>(GetOffset());
-		case BGRAColor:
-			return GenerateDesc<BGRAColor>(GetOffset());
-		}
-		assert("Invalid element type" && false);
-		return { "INVALID",0,DXGI_FORMAT_UNKNOWN,0,0,D3D11_INPUT_PER_VERTEX_DATA,0 };
+		return Bridge<DescGenerate>(type, GetOffset());
 	}
 
 
@@ -115,10 +135,42 @@ namespace Dvtx
 
 
 	// VertexBuffer
-	VertexBuffer::VertexBuffer(VertexLayout layout) noxnd
+	VertexBuffer::VertexBuffer(VertexLayout layout, size_t size) noxnd
 		:
 	layout(std::move(layout))
-	{}
+	{
+		Resize(size);
+	}
+	void VertexBuffer::Resize(size_t newSize) noxnd
+	{
+		const auto size = Size();
+		if (size < newSize)
+		{
+			buffer.resize(buffer.size() + layout.Size() * (newSize - size));
+		}
+	}
+
+	template<VertexLayout::ElementType type>
+	struct AttributeAiMeshFill
+	{
+		static constexpr void Exec(VertexBuffer* pBuf, const aiMesh& mesh) noxnd
+		{
+			for (auto end = mesh.mNumVertices, i = 0u; i < end; i++)
+			{
+				(*pBuf)[i].Attr<type>() = VertexLayout::Map<type>::Extract(mesh, i);
+			}
+		}
+	};
+	VertexBuffer::VertexBuffer(VertexLayout layout_in, const aiMesh& mesh)
+		:
+		layout(std::move(layout_in))
+	{
+		Resize(mesh.mNumVertices);
+		for (size_t i = 0, end = layout.GetElementCount(); i < end; i++)
+		{
+			VertexLayout::Bridge<AttributeAiMeshFill>(layout.ResolveByIndex(i).GetType(), this, mesh);
+		}
+	}
 	const char* VertexBuffer::GetData() const noxnd
 	{
 		return buffer.data();

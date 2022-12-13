@@ -103,6 +103,36 @@
     <Filter Include="Source Files\Engine\Utils">
       <UniqueIdentifier>{58437e5f-8a43-4176-b97b-6b6937b21e7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Shader\Shader Utils">
+      <UniqueIdentifier>{71424ff5-6cb2-48b9-8e28-d0f5826638c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\dxtex">
+      <UniqueIdentifier>{a002f30b-9813-49e0-9430-6070f6b3e10a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\dxtex\Lib Debug">
+      <UniqueIdentifier>{6c11be83-3841-4743-8143-e992ae45c8a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\dxtex\Lib Release">
+      <UniqueIdentifier>{50fc543e-97bc-477a-8649-ba470ae3f5c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Drawable\Job Queue">
+      <UniqueIdentifier>{0f2dcd7b-42d8-457c-b72a-fffab5edb565}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window\Graphics\Drawable\Job Queue">
+      <UniqueIdentifier>{704df890-f6aa-4dd2-948a-f4e2e5174ccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Bindable\Dynamic Impl">
+      <UniqueIdentifier>{a5bef563-02b9-4a31-b827-181679e57572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window\Graphics\Bindable\Dynamic Impl">
+      <UniqueIdentifier>{f92021ae-9767-43d8-883e-70b3345755f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Drawable\Mesh Object">
+      <UniqueIdentifier>{f586b4ca-dc55-4aad-bd5b-eaff2f4f8336}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Window\Graphics\Drawable\Mesh Object">
+      <UniqueIdentifier>{91cf3695-16ff-478f-9d5c-a099a8ae8360}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp">
@@ -153,9 +183,6 @@
     <ClCompile Include="WndInfo.cpp">
       <Filter>Source Files\Engine\Window</Filter>
     </ClCompile>
-    <ClCompile Include="GDIPlusManager.cpp">
-      <Filter>Source Files\Engine\Window\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Sampler.cpp">
       <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
     </ClCompile>
@@ -192,20 +219,8 @@
     <ClCompile Include="PointLight.cpp">
       <Filter>Source Files\Engine\Window\Graphics\Drawable\Objects\Lights</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Source Files\Engine\Window\Graphics\Drawable</Filter>
-    </ClCompile>
-    <ClCompile Include="AssTest.cpp">
-      <Filter>Source Files\Engine\Window\Graphics\Drawable\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="SolidSphere.cpp">
       <Filter>Source Files\Engine\Window\Graphics\Drawable\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Surface.cpp">
-      <Filter>Source Files\Engine\Window\Graphics\Drawable</Filter>
-    </ClCompile>
-    <ClCompile Include="Vertex.cpp">
-      <Filter>Source Files\Engine\Window\Graphics\Drawable</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
       <Filter>Source Files\Engine\Window\Event Handlers</Filter>
@@ -218,6 +233,69 @@
     </ClCompile>
     <ClCompile Include="SkyenetTimer.cpp">
       <Filter>Source Files\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="TestPlane.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformCbufDoubleboi.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="TestCube.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyeXM.cpp">
+      <Filter>Source Files\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Blender.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Rasterizer.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="NullPixelShader.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyeUtil.cpp">
+      <Filter>Source Files\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Job.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Job Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="Step.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Job Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="Technique.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Job Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicConstant.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable\Dynamic Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="LayoutCodex.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable\Dynamic Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="Testing.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Bindable\Dynamic Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Surface.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelException.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,32 +353,14 @@
     <ClInclude Include="VertexShader.h">
       <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
     </ClInclude>
-    <ClInclude Include="DrawableBase.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
-    </ClInclude>
     <ClInclude Include="IndexedTriangleList.h">
       <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects\Geometric Primatives</Filter>
-    </ClInclude>
-    <ClInclude Include="Plane.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects\Geometric Primatives</Filter>
-    </ClInclude>
-    <ClInclude Include="Prism.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects\Geometric Primatives</Filter>
     </ClInclude>
     <ClInclude Include="Sphere.h">
       <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects\Geometric Primatives</Filter>
     </ClInclude>
-    <ClInclude Include="Cone.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects\Geometric Primatives</Filter>
-    </ClInclude>
     <ClInclude Include="WndInfo.h">
       <Filter>Header Files\Engine\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="GDIPlusManager.h">
-      <Filter>Header Files\Engine\Window\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Sampler.h">
       <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
@@ -566,22 +626,7 @@
     <ClInclude Include="assimp\include\assimp\XMLTools.h">
       <Filter>Header Files\Engine\Assimp</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="Surface.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="AssTest.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="SolidSphere.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="TestObject.h">
       <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects</Filter>
     </ClInclude>
     <ClInclude Include="ConditionalNoexcept.h">
@@ -592,9 +637,6 @@
     </ClInclude>
     <ClInclude Include="GraphicsExceptionMacros.h">
       <Filter>Header Files\Engine\Window\Graphics\Helper Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Color.h">
-      <Filter>Header Files\Engine\Window\Graphics\Drawable</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard.h">
       <Filter>Header Files\Engine\Window\Event Handlers</Filter>
@@ -610,6 +652,126 @@
     </ClInclude>
     <ClInclude Include="SkyenetTimer.h">
       <Filter>Header Files\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="BindableCodex.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects\Geometric Primatives</Filter>
+    </ClInclude>
+    <ClInclude Include="TestPlane.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformCbufDoubleboi.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects\Geometric Primatives</Filter>
+    </ClInclude>
+    <ClInclude Include="TestCube.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyeXM.h">
+      <Filter>Header Files\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Blender.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Rasterizer.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="dxtex\include\dxtex\BC.h">
+      <Filter>Header Files\Engine\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="dxtex\include\dxtex\BCDirectCompute.h">
+      <Filter>Header Files\Engine\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="dxtex\include\dxtex\d3dx12.h">
+      <Filter>Header Files\Engine\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="dxtex\include\dxtex\DDS.h">
+      <Filter>Header Files\Engine\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="dxtex\include\dxtex\DirectXTex.h">
+      <Filter>Header Files\Engine\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="dxtex\include\dxtex\DirectXTexP.h">
+      <Filter>Header Files\Engine\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="dxtex\include\dxtex\filters.h">
+      <Filter>Header Files\Engine\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="dxtex\include\dxtex\scoped.h">
+      <Filter>Header Files\Engine\dxtex</Filter>
+    </ClInclude>
+    <ClInclude Include="Stencil.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Job.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Job Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Pass.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Job Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Step.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Job Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Technique.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Job Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameCommander.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Job Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="NullPixelShader.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyeUtil.h">
+      <Filter>Header Files\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="PerfLog.h">
+      <Filter>Header Files\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="LayoutCodex.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable\Dynamic Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicConstant.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable\Dynamic Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffersEx.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable\Dynamic Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="Testing.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable\Dynamic Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="TechniqueProbe.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Job Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Surface.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelException.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelProbe.h">
+      <Filter>Header Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -662,24 +824,88 @@
     <None Include="zlib1.dll">
       <Filter>Header Files\Engine\Assimp\dll%28s%29</Filter>
     </None>
+    <None Include="dxtex\include\dxtex\DirectXTex.inl">
+      <Filter>Header Files\Engine\dxtex</Filter>
+    </None>
+    <None Include="..\..\..\..\Desktop\hw3d-master\hw3d\dxtex\bin\Release\DirectXTex.pdb">
+      <Filter>Header Files\Engine\dxtex\Lib Release</Filter>
+    </None>
+    <None Include="..\..\..\..\Desktop\hw3d-master\hw3d\dxtex\bin\Debug\DirectXTex.pdb">
+      <Filter>Header Files\Engine\dxtex\Lib Debug</Filter>
+    </None>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="PhongPS.hlsl">
+    <FxCompile Include="PhongDif_PS.hlsl">
       <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
     </FxCompile>
-    <FxCompile Include="SolidPS.hlsl">
+    <FxCompile Include="Solid_PS.hlsl">
       <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
     </FxCompile>
-    <FxCompile Include="PhongVS.hlsl">
+    <FxCompile Include="PhongDif_VS.hlsl">
       <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
     </FxCompile>
-    <FxCompile Include="SolidVS.hlsl">
+    <FxCompile Include="Solid_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifSpcNrm_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifNrm_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifNrm_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="xPhongDifNro.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Phong_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Phong_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Transform.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Shader Utils</Filter>
+    </FxCompile>
+    <FxCompile Include="ShaderOps.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Shader Utils</Filter>
+    </FxCompile>
+    <FxCompile Include="PointLight.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Shader Utils</Filter>
+    </FxCompile>
+    <FxCompile Include="LightVectorData.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Shader Utils</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifSpc_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifMskSpcNrm_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifMskSpcNrm_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifSpcNrm_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifSpc_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Offset_VS.hlsl">
       <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="assimp\bin\x64\assimp-vc140-mt.lib">
       <Filter>Header Files\Engine\Assimp\dll%28s%29</Filter>
+    </Library>
+    <Library Include="..\..\..\..\Desktop\hw3d-master\hw3d\dxtex\bin\Release\DirectXTex.lib">
+      <Filter>Header Files\Engine\dxtex\Lib Release</Filter>
+    </Library>
+    <Library Include="..\..\..\..\Desktop\hw3d-master\hw3d\dxtex\bin\Debug\DirectXTex.lib">
+      <Filter>Header Files\Engine\dxtex\Lib Debug</Filter>
     </Library>
   </ItemGroup>
 </Project>
