@@ -133,6 +133,12 @@
     <Filter Include="Source Files\Engine\Window\Graphics\Drawable\Mesh Object">
       <UniqueIdentifier>{91cf3695-16ff-478f-9d5c-a099a8ae8360}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Shader\Pixel Shader">
+      <UniqueIdentifier>{21484a8f-a033-49b9-9e03-2457c0fb0c70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Window\Graphics\Shader\Vertex Shader">
+      <UniqueIdentifier>{599a0464-6d9e-42c0-adea-b6e3619ce79e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp">
@@ -773,6 +779,9 @@
     <ClInclude Include="ModelProbe.h">
       <Filter>Header Files\Engine\Window\Graphics\Drawable\Mesh Object</Filter>
     </ClInclude>
+    <ClInclude Include="StructuredBuffers.h">
+      <Filter>Header Files\Engine\Window\Graphics\Bindable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Experimental 3D.rc">
@@ -836,36 +845,6 @@
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="PhongDif_PS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Solid_PS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="PhongDif_VS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Solid_VS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="PhongDifSpcNrm_PS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="PhongDifNrm_PS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="PhongDifNrm_VS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="xPhongDifNro.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Phong_PS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="Phong_VS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
     <FxCompile Include="Transform.hlsl">
       <Filter>Header Files\Engine\Window\Graphics\Shader\Shader Utils</Filter>
     </FxCompile>
@@ -878,23 +857,53 @@
     <FxCompile Include="LightVectorData.hlsl">
       <Filter>Header Files\Engine\Window\Graphics\Shader\Shader Utils</Filter>
     </FxCompile>
-    <FxCompile Include="PhongDifSpc_PS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="PhongDifMskSpcNrm_PS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    <FxCompile Include="Offset_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Vertex Shader</Filter>
     </FxCompile>
     <FxCompile Include="PhongDifMskSpcNrm_VS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
-    </FxCompile>
-    <FxCompile Include="PhongDifSpcNrm_VS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Vertex Shader</Filter>
     </FxCompile>
     <FxCompile Include="PhongDifSpc_VS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Vertex Shader</Filter>
     </FxCompile>
-    <FxCompile Include="Offset_VS.hlsl">
-      <Filter>Header Files\Engine\Window\Graphics\Shader</Filter>
+    <FxCompile Include="PhongDifSpcNrm_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Vertex Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDif_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Vertex Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifNrm_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Vertex Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Phong_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Vertex Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Solid_VS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Vertex Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Solid_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Pixel Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifSpcNrm_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Pixel Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifSpc_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Pixel Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Phong_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Pixel Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="xPhongDifNro.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Pixel Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifNrm_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Pixel Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDifMskSpcNrm_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Pixel Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PhongDif_PS.hlsl">
+      <Filter>Header Files\Engine\Window\Graphics\Shader\Pixel Shader</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

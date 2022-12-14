@@ -26,7 +26,11 @@ App::App()
 	light1(wnd.Gfx()),
 	light2(wnd.Gfx()),
 	light3(wnd.Gfx()),
-	light4(wnd.Gfx())
+	light4(wnd.Gfx()),
+	light5(wnd.Gfx()),
+	light6(wnd.Gfx()),
+	light7(wnd.Gfx()),
+	light8(wnd.Gfx())
 	{
 	//TestDynamicConstant();
 	//TestDynamicMeshLoading();
@@ -44,8 +48,24 @@ App::App()
 	light2.SetPos({ 24.4f, 7.5f, 11.0f });
 	light3.SetPos({ -31.0f, 7.5f, -7.2f });
 	light4.SetPos({ 24.4f, 7.5f, -7.2f });
-	cube.SetPos({ 4.0f, 0.0f, 0.0f });
-	cube.SetPos({ 0.0f, 4.0f, 0.0f });
+
+	//vase lights
+	light5.SetPos({56.0f, 8.0f, 22.5f});
+	light6.SetPos({56.0f, 8.0f, -20.1f});
+	light7.SetPos({-60.0f, 8.0f, -20.1f});
+	light8.SetPos({-60.0f, 8.0f, 22.5f});
+
+	light5.SetColor({1.0f, 0.69f, 0.41f});
+	light6.SetColor({ 1.0f, 0.69f, 0.41f });
+	light7.SetColor({ 1.0f, 0.69f, 0.41f });
+	light8.SetColor({ 1.0f, 0.69f, 0.41f });
+
+	light5.SetIntensity(2.0f);
+	light6.SetIntensity(2.0f);
+	light7.SetIntensity(2.0f);
+	light8.SetIntensity(2.0f);
+	//cube.SetPos({ 4.0f, 0.0f, 0.0f });
+	//cube.SetPos({ 0.0f, 4.0f, 0.0f });
 
 	WndInfo winfo = wnd.GetWndInfo();
 	wnd.Gfx().SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, (float)winfo.CRegion.height / (float) winfo.CRegion.width, 0.5f,600.0f));
@@ -167,13 +187,20 @@ void App::DoFrame(float dt) {
 	//tp.Draw(wnd.Gfx());
 	//nano.Draw(wnd.Gfx());
 	//gobber.Submit(fc);
-	cube.Submit(fc);
+	//cube.Submit(fc);
+
+	sponza.Submit(fc);
+	
 	light1.Submit(fc);
 	light2.Submit(fc);
 	light3.Submit(fc);
 	light4.Submit(fc);
-	sponza.Submit(fc);
-	cube2.Submit(fc);
+	light5.Submit(fc);
+	light6.Submit(fc);
+	light7.Submit(fc);
+	light8.Submit(fc);
+
+	//cube2.Submit(fc);
 
 	fc.Execute(wnd.Gfx());
 
@@ -387,10 +414,10 @@ void App::DoFrame(float dt) {
 
 	//imgui windows
 	modelProbe.SpawnWindow(sponza);
-	cam.SpawnControlWindow();
-	light1.SpawnControlWindow();
-	cube.SpawnControlWindow(wnd.Gfx(), "Cube 1");
-	cube2.SpawnControlWindow(wnd.Gfx(), "Cube 2");
+	//cam.SpawnControlWindow();
+	//light1.SpawnControlWindow();
+	//cube.SpawnControlWindow(wnd.Gfx(), "Cube 1");
+	//cube2.SpawnControlWindow(wnd.Gfx(), "Cube 2");
 	//gobber.ShowWindow(wnd.Gfx(), "gobber");
 	//wall.ShowWindow(wnd.Gfx(), "Wall");
 	//tp.SpawnControlWindow(wnd.Gfx());

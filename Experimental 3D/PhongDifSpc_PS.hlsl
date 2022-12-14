@@ -1,8 +1,6 @@
 #include "ShaderOps.hlsl"
 #include "LightVectorData.hlsl"
 
-#include "PointLight.hlsl"
-
 cbuffer ObjectCBuf
 {
     bool useGlossAlpha;
@@ -11,6 +9,8 @@ cbuffer ObjectCBuf
     float specularWeight;
     float specularGloss;
 };
+
+#include "PointLight.hlsl"
 
 Texture2D tex;
 Texture2D spec;
@@ -44,6 +44,7 @@ float4 main(float3 viewFragPos : Position, float3 viewNormal : Normal, float2 tc
     float3 diffuse = { 0.0f, 0.0f, 0.0f };
     float3 specularReflected = { 0.0f, 0.0f, 0.0f };
     float3 ambient = { 0.0f, 0.0f, 0.0f };
+    int num_point_lights = 8;
     for (int i = 0; i < num_point_lights; i++)
     {
     // fragment to light vector data
@@ -59,7 +60,7 @@ float4 main(float3 viewFragPos : Position, float3 viewNormal : Normal, float2 tc
             lv.vToL, viewFragPos, att, specularPowerLoaded
         );
     // ambient
-        ambient += pointLights[i].ambient;
+        ambient += pointLights[i].ambient * att;
     }
     ambient /= num_point_lights;
     // final color = attenuate diffuse & ambient by diffuse texture color and add specular reflected

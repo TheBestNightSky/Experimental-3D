@@ -1,8 +1,6 @@
 #include "ShaderOps.hlsl"
 #include "LightVectorData.hlsl"
 
-#include "PointLight.hlsl"
-
 cbuffer ObjectCBuf
 {
     float3 specularColor;
@@ -11,6 +9,8 @@ cbuffer ObjectCBuf
     bool useNormalMap;
     float normalMapWeight;
 };
+
+#include "PointLight.hlsl"
 
 Texture2D tex;
 Texture2D nmap : register(t2);
@@ -33,6 +33,7 @@ float4 main(float3 viewFragPos : Position, float3 viewNormal : Normal, float3 vi
     float3 diffuse = { 0.0f, 0.0f, 0.0f };
     float3 specular = { 0.0f, 0.0f, 0.0f };
     float3 ambient = { 0.0f, 0.0f, 0.0f };
+    int num_point_lights = 8;
     for (int i = 0; i < num_point_lights; i++)
     {
     // fragment to light vector data
@@ -47,7 +48,7 @@ float4 main(float3 viewFragPos : Position, float3 viewNormal : Normal, float3 vi
         lv.vToL, viewFragPos, att, specularGloss
         );
     // ambient
-        ambient += pointLights[i].ambient;
+        ambient += pointLights[i].ambient * att;
     }
     ambient /= num_point_lights;
     // final color

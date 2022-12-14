@@ -35,8 +35,13 @@ private:
 	PointLight light2;
 	PointLight light3;
 	PointLight light4;
-	TestCube cube{ wnd.Gfx(), 4.0f };
-	TestCube cube2{ wnd.Gfx(), 4.0f };
+	//vase lights
+	PointLight light5;
+	PointLight light6;
+	PointLight light7;
+	PointLight light8;
+	//TestCube cube{ wnd.Gfx(), 4.0f };
+	//TestCube cube2{ wnd.Gfx(), 4.0f };
 	Model sponza{ wnd.Gfx(), "Models\\sponza\\sponza.obj", 1.0f / 20.0f };
 	//Model gobber{ wnd.Gfx(),"Models\\gobber\\GoblinX.obj", 4.0f};
 	//Model wall{ wnd.Gfx(),"Models\\brick_wall\\brick_wall.obj", 6.0f};

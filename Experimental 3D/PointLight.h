@@ -2,6 +2,7 @@
 #include "Graphics.h"
 #include "SolidSphere.h"
 #include "ConstantBuffers.h"
+#include "StructuredBuffers.h"
 #include "ConditionalNoexcept.h"
 #include <vector>
 #include <memory>
@@ -13,28 +14,31 @@ public:
 	void SpawnControlWindow(const char* name = "Light") noexcept;
 	void Reset() noexcept;
 	void SetPos(DirectX::XMFLOAT3 pos_in) noexcept;
+	void SetColor(DirectX::XMFLOAT3 color_in) noexcept;
+	void SetIntensity(float intensity_in) noexcept;
+	void CreateBuffer(Graphics& gfx) const noexcept;
 	void Submit(class FrameCommander& frame) const noxnd;
 	void Bind(Graphics& gfx, DirectX::FXMMATRIX view) const noexcept;
 public:
 	struct PointLightData
 	{
-		alignas(16) DirectX::XMFLOAT3 pos;
-		alignas(16) DirectX::XMFLOAT3 ambient;
-		alignas(16) DirectX::XMFLOAT3 diffuseColor;
+		DirectX::XMFLOAT3 pos;
+		float pad0;
+		DirectX::XMFLOAT3 ambient;
+		float pad1;
+		DirectX::XMFLOAT3 diffuseColor;
+		float pad2;
 		float diffuseIntensity;
 		float attConst;
 		float attLin;
 		float attQuad;
 	};
-	struct PointLightCBuf
-	{
-		long num_point_lights;
-		PointLightData pointLights[1000];
-		int padding[26];
-	};
+private:
+	void Update(Graphics& gfx, std::vector<PointLightData> buf_in) const noexcept;
 private:
 	PointLightData cbData;
 	mutable SolidSphere mesh;
-	mutable Bind::PixelConstantBuffer<PointLightCBuf> cbuf;
+	static std::shared_ptr<Bind::PixelStructuredBuffer<std::vector<PointLightData>>> pStructuredBuffer;
 	static std::vector<PointLightData*> pDataBuffer;
+	static bool dirty;
 };

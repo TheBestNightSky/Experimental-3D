@@ -287,6 +287,7 @@
     <ClInclude Include="dxtex\include\dxtex\scoped.h" />
     <ClInclude Include="DynamicConstant.h" />
     <ClInclude Include="FrameCommander.h" />
+    <ClInclude Include="StructuredBuffers.h" />
     <ClInclude Include="ImguiManager.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />

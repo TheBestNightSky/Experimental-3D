@@ -30,7 +30,7 @@ SolidSphere::SolidSphere(Graphics& gfx, float radius)
 
 		struct PSColorConstant
 		{
-			dx::XMFLOAT3 color = { 1.0f,1.0f,1.0f };
+			dx::XMFLOAT3 color = {1.0f, 1.0f, 1.0f};
 			float padding;
 		} colorConst;
 		only.AddBindable(PixelConstantBuffer<PSColorConstant>::Resolve(gfx, colorConst, 1u));
@@ -39,7 +39,7 @@ SolidSphere::SolidSphere(Graphics& gfx, float radius)
 
 		only.AddBindable(std::make_shared<TransformCbuf>(gfx));
 
-		only.AddBindable(Blender::Resolve(gfx, false));
+		only.AddBindable(Blender::Resolve(gfx, true, 0.2f));
 
 		only.AddBindable(Rasterizer::Resolve(gfx, false));
 

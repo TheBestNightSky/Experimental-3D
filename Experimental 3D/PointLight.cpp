@@ -6,11 +6,21 @@
 
 PointLight::PointLight(Graphics& gfx, float radius)
 	:
-	mesh(gfx, radius),
-	cbuf(gfx)
+	mesh(gfx, radius)
 {
 	Reset();
 	pDataBuffer.push_back(&(this->cbData));
+}
+
+void PointLight::CreateBuffer(Graphics& gfx) const noexcept
+{
+	std::vector<PointLightData> data;
+
+	for (int i = 0; i < pDataBuffer.size(); i++) {
+		data.push_back(*(pDataBuffer[i]));
+	}
+
+	pStructuredBuffer = Bind::PixelStructuredBuffer<std::vector<PointLightData>>::Resolve(gfx, data, 4u);
 }
 
 void PointLight::SpawnControlWindow(const char* name) noexcept
@@ -44,17 +54,31 @@ void PointLight::Reset() noexcept
 {
 	cbData = {
 		{ 10.0f,9.0f,-2.5f },
-		{ 0.0f,0.0f,0.0f },
+		0.0f,
+		{ 0.1f,0.1f,0.1f },
+		0.0f,
 		{ 1.0f,1.0f,1.0f },
+		0.0f,
 		1.0f,
 		1.0f,
-		0.045f,
-		0.0075f,
+		0.0745f,
+		0.0366f,
 	};
 }
 
 void PointLight::SetPos(DirectX::XMFLOAT3 pos_in) noexcept {
 	cbData.pos = pos_in;
+	dirty = true;
+}
+
+void PointLight::SetColor(DirectX::XMFLOAT3 color_in) noexcept {
+	cbData.diffuseColor = color_in;
+	dirty = true;
+}
+
+void PointLight::SetIntensity(float intensity_in) noexcept {
+	cbData.diffuseIntensity = intensity_in;
+	dirty = true;
 }
 
 void PointLight::Submit(FrameCommander& frame) const noxnd
@@ -63,21 +87,35 @@ void PointLight::Submit(FrameCommander& frame) const noxnd
 	mesh.Submit(frame);
 }
 
+void PointLight::Update(Graphics& gfx, std::vector<PointLightData> buf_in) const noexcept{
+	pStructuredBuffer.get()->Update(gfx, buf_in);
+}
+
 void PointLight::Bind(Graphics& gfx, DirectX::FXMMATRIX view) const noexcept
 {
 	if (!pDataBuffer.empty()) {
-		PointLightCBuf Data;
-		Data.num_point_lights = 0;
-		for (int i = 0; i < pDataBuffer.size(); i++) {
-			auto dataCopy = *(pDataBuffer[i]);
-			const auto pos = DirectX::XMLoadFloat3(&dataCopy.pos);
-			DirectX::XMStoreFloat3(&dataCopy.pos, DirectX::XMVector3Transform(pos, view));
-			Data.pointLights[i] = dataCopy;
-			Data.num_point_lights++;
+		if (pStructuredBuffer == nullptr) {
+			CreateBuffer(gfx);
 		}
-		cbuf.Update(gfx, Data);
-		cbuf.Bind(gfx);
+
+		if (dirty) {
+			std::vector<PointLightData> data;
+
+			for (int i = 0; i < pDataBuffer.size(); i++) {
+				data.push_back(*(pDataBuffer[i]));
+
+				const auto pos = DirectX::XMLoadFloat3(&data[i].pos);
+				DirectX::XMStoreFloat3(&data[i].pos, DirectX::XMVector3Transform(pos, view));
+			}
+
+			Update(gfx, data);
+			dirty = false;
+		}
+		pStructuredBuffer.get()->Bind(gfx);
+
 	}
 }
 
+std::shared_ptr<Bind::PixelStructuredBuffer<std::vector<PointLight::PointLightData>>> PointLight::pStructuredBuffer;
 std::vector<PointLight::PointLightData*> PointLight::pDataBuffer;
+bool PointLight::dirty;

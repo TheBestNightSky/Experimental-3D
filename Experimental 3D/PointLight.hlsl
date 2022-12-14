@@ -11,15 +11,15 @@
 
 struct PointLight {
     float3 viewLightPos;
+    float pad0;
     float3 ambient;
+    float pad1;
     float3 diffuseColor;
+    float pad2;
     float diffuseIntensity;
     float attConst;
     float attLin;
     float attQuad;
 };
 
-cbuffer PointLightCBuf {
-    int num_point_lights;
-    uniform PointLight pointLights[1000];
-};
+StructuredBuffer<PointLight> pointLights : register(t4);
