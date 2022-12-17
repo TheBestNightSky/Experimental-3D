@@ -10,7 +10,7 @@
 //};
 
 struct PointLight {
-    float3 viewLightPos;
+    float3 LightPos;
     float pad0;
     float3 ambient;
     float pad1;
@@ -23,3 +23,8 @@ struct PointLight {
 };
 
 StructuredBuffer<PointLight> pointLights : register(t4);
+
+cbuffer LightCBuf : register(b2)
+{
+    matrix CameraView;
+};

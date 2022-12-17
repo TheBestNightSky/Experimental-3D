@@ -21,7 +21,7 @@ namespace Bind
 				D3D11_MAP_WRITE_DISCARD, 0u,
 				&msr
 			));
-			memcpy_s(msr.pData,sizeInBytes, consts.data(), sizeInBytes);
+			memcpy(msr.pData, consts.data(), sizeInBytes);
 			GetContext(gfx)->Unmap(pConstantBuffer.Get(), 0u);
 		}
 		StructuredBuffer(Graphics& gfx, const C& consts, UINT slot = 0u)
@@ -40,7 +40,7 @@ namespace Bind
 
 			D3D11_SUBRESOURCE_DATA csd = {};
 			csd.pSysMem = consts.data();
-			GFX_THROW_INFO(GetDevice(gfx)->CreateBuffer(&cbd, nullptr, &pConstantBuffer));
+			GFX_THROW_INFO(GetDevice(gfx)->CreateBuffer(&cbd, &csd, &pConstantBuffer));
 
 			D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
 			srvDesc.Format = DXGI_FORMAT_UNKNOWN;
@@ -83,6 +83,13 @@ namespace Bind
 		void Bind(Graphics& gfx) noexcept override
 		{
 			GetContext(gfx)->PSSetShaderResources(slot, 1u, pSrv.GetAddressOf());
+			bcount++;
+		}
+		unsigned int GetBindCount() noexcept {
+			return bcount;
+		}
+		void ResetBindCount() noexcept {
+			bcount = 0;
 		}
 		static std::shared_ptr<PixelStructuredBuffer> Resolve(Graphics& gfx, const C& consts, UINT slot = 0)
 		{
@@ -105,5 +112,7 @@ namespace Bind
 		{
 			return GenerateUID(slot);
 		}
+	private:
+		unsigned int bcount = 0;
 	};
 }

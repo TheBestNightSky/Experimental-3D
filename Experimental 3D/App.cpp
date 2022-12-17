@@ -32,8 +32,10 @@ App::App()
 	light7(wnd.Gfx()),
 	light8(wnd.Gfx())
 	{
-	//TestDynamicConstant();
-	//TestDynamicMeshLoading();
+	TestScaleMatrixTranslation();
+	TestDynamicConstant();
+	TestDynamicMeshLoading();
+	TestMaterialSystemLoading(wnd.Gfx());
 
 	/*wall.SetRootTransform(DirectX::XMMatrixTranslation(-12.0f, 0.0f, 0.0f));
 	tp.SetPos({ 12.0f,0.0f,-1.0f });
@@ -104,7 +106,6 @@ void App::DoFrame(float dt) {
 	wnd.Gfx().BeginFrame(c, d, f);
 	wnd.Gfx().SetCamera(cam.GetMatrix());
 	//
-	light1.Bind(wnd.Gfx(), cam.GetMatrix());
 
 	while (!wnd.mouse.IsEmpty()) {
 		const auto e = *wnd.mouse.Read();
@@ -190,6 +191,8 @@ void App::DoFrame(float dt) {
 	//cube.Submit(fc);
 
 	sponza.Submit(fc);
+
+	light1.Bind(wnd.Gfx(), cam.GetMatrix());
 	
 	light1.Submit(fc);
 	light2.Submit(fc);
@@ -414,8 +417,8 @@ void App::DoFrame(float dt) {
 
 	//imgui windows
 	modelProbe.SpawnWindow(sponza);
-	//cam.SpawnControlWindow();
-	//light1.SpawnControlWindow();
+	cam.SpawnControlWindow();
+	light1.SpawnControlWindow();
 	//cube.SpawnControlWindow(wnd.Gfx(), "Cube 1");
 	//cube2.SpawnControlWindow(wnd.Gfx(), "Cube 2");
 	//gobber.ShowWindow(wnd.Gfx(), "gobber");
@@ -425,7 +428,7 @@ void App::DoFrame(float dt) {
 	//sponza.ShowWindow(wnd.Gfx(), "Sponza");
 	//bluePlane.SpawnControlWindow(wnd.Gfx(), "Blue Plane");
 	//redPlane.SpawnControlWindow(wnd.Gfx(), "Red Plane");
-
+	// 
 	//present
 	switch (data.vsync) {
 	case true:
@@ -436,4 +439,7 @@ void App::DoFrame(float dt) {
 		break;
 	};
 	fc.Reset();
+	//std::string bcount = std::to_string(light1.GetBufferBindCount());
+	//bcount = "Light Structured Buffer bound " + bcount + " times(s) this frame\n";
+	//OutputDebugStringA(bcount.c_str());
 }
